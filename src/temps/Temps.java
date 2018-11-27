@@ -78,14 +78,20 @@ abstract public class Temps implements Comparable<Temps> {
 	 * retranche une heure au temps considéré
 	 */
 	abstract public void moins1heure() throws ExceptionOperationImpossible;
-
+	/**
+	 * convertit le temps en minutes
+	 *
+	 * @return un nombre de minutes
+	 */
+	public int enMinutes() {
+		return heure * 60 + minute;
+	}
 	/**
 	 * construit un texte notant le temps considéré
 	 *
 	 * @return une chaine de caractères
 	 */
 	abstract public String toString();
-
 	/**
 	 * compare un temps à un autre
 	 *
