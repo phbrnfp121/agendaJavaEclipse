@@ -3,6 +3,8 @@ package temps;
 import java.util.StringTokenizer;
 import static java.lang.Integer.parseInt;
 
+import java.io.Serializable;
+
 import outils.Comparable;
 
 /**
@@ -11,7 +13,7 @@ import outils.Comparable;
  * @author LICINFO20182019
  * @version 1
  */
-abstract public class Temps implements Comparable<Temps> {
+abstract public class Temps implements Comparable<Temps>, Serializable {
 	protected int heure, minute;
 	private void initialise(int h, int m, String quoi, boolean borneSupHeure)
 	throws ExceptionHeureErronee, ExceptionMinuteErronee {

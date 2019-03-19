@@ -2,6 +2,9 @@ package temps;
 
 import java.util.StringTokenizer;
 import static java.lang.Integer.parseInt;
+
+import java.io.Serializable;
+
 import outils.Comparable;
 
 /**
@@ -10,7 +13,7 @@ import outils.Comparable;
  * @author LICINFO20182019
  * @version 3
  */
-public class Date implements Comparable<Date> {
+public class Date implements Comparable<Date>, Serializable {
 	private int jour;
 	private int mois;
 	private int annee;

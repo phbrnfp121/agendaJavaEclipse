@@ -2,13 +2,17 @@ package agenda;
 
 import temps.*;
 
+import java.io.Serializable;
+
+import outils.Comparable;
+
 /**
  * La classe Evenement décrit des éléments d'un agenda.
  *
  * @author LICINFO20182019
  * @see Agenda
  */
-public class Evenement {
+public class Evenement implements Comparable<Evenement>, Serializable {
 	private String libelle;
 	private String description;
 	private Date dateDebut;
@@ -27,6 +31,14 @@ public class Evenement {
 		dateDebut = d;
 		heureDebut = h;
 		try { duree = new Duree(1, 0); } catch(Exception e) { }
+	}
+	/**
+	 * change le libelle de l'événement
+	 * 
+	 * @param nouveauLibelle une chaîne de caractères qui est le nouveau libellé
+	 */
+	public void changerLibelle(String nouveauLibelle) {
+		libelle = nouveauLibelle;
 	}
 	/**
 	 * retarde l'événement d'un jour
@@ -55,6 +67,20 @@ public class Evenement {
 		if (heureDebut.enMinutes() >= 1380) dateDebut.passerALaVeille();
 	}
 	/**
+	 * augmente d'une minute la durée de l'événement
+	 */
+	public void uneMinutePlusLong() {
+		duree.plus1minute();
+	}
+	/**
+	 * diminue d'une minute la durée de l'événement
+	 */
+	public void uneMinuteMoinsLong() {
+		try {
+			duree.moins1minute();
+		} catch(Exception e) { }
+	}
+	/**
 	 * produit un texte décrivant l'événement
 	 *
 	 * @return une chaîne de caractères décrivant l'événement
@@ -65,5 +91,16 @@ public class Evenement {
 		texte += " (" + duree + ")";
 		texte += " : " + libelle;
 		return texte;
+	}
+	public int compareA(Evenement autre) {
+		int diffDates = dateDebut.compareA(autre.dateDebut);
+		if (diffDates == 0) {
+			int diffHeures = heureDebut.compareA(autre.heureDebut);
+			if (diffHeures == 0)
+				return duree.compareA(autre.duree);
+			else
+				return diffHeures;
+		} else
+			return diffDates;
 	}
 }

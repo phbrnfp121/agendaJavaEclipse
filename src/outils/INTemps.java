@@ -17,10 +17,10 @@ public class INTemps {
         return texte;
     }
     public static String getTexteDate() {
-        return getTexte("^[0-3]{0,1}[0-9]{1}/[0-1]{0,1}[0-9]{1}/[0-9]{4}$", "[3]9/[1]9/9999");
+        return getTexte("^[0-3]{0,1}[0-9]{1}/[01]{0,1}[0-9]{1}/[0-9]{4}$", "[3]9/[1]9/9999");
     }
     public static String getTexteHeure() {
-        return getTexte("^[0-2]{0,1}[0-9]{1}:[0-5]{1}[0-9]{1}", "[2]9:59");
+        return getTexte("^[0-2]{0,1}[0-9]{1}:[0-5]{1}[0-9]{1}$", "[2]9:59");
     }
     public static String getTexteDuree() {
         return getTexte("^[0-9]+:[0-9]{2}$", "[9]9:99");
